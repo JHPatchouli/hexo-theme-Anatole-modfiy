@@ -12,6 +12,8 @@
 
 #### 版权代码“文章作者链接”和“文章转载声明链接”可以自定义，需在_config.yml中修改，版权代码默认开启
 
+#### 加入了谷歌分析功能，如果不想开启_config.yml中的UAID处留空
+
 > 以下是原项目描述文件内容
 
 This work hexo-theme-Anatole is forked from [farbox-theme-Anatole](https://github.com/hi-caicai/farbox-theme-Anatole). Features: two-column, responsive, clean, light, and comfortable.
