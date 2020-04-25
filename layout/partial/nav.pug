@@ -1,0 +1,31 @@
+.page-top.animated.fadeInDown
+  .nav
+    li
+      if is_home()
+        a.current(href="/blog")= __('Home')					
+      else
+        a(href="/blog")= __('Home')	
+    li
+      if is_current('about')
+        a.current(href="/blog/about")= __('About')			
+      else
+        a(href="/blog/about")= __('About')
+    li
+      if is_archive()
+        a.current(href="/blog/archives")= __('Archive')
+      else
+        a(href="/blog/archives")= __('Archive')
+    li
+      if is_current('links')
+        a.current(href="/blog/links")= __('Links')					
+      else
+        a(href="/blog/links")= __('Links')		
+  .information
+    .back_btn
+      li
+        if is_post()
+          a.fa.fa-chevron-left(onclick="window.history.go(-1)") 
+        else
+          a.fa.fa-chevron-left(onclick="window.history.go(-1)",style="display:none;") 
+    .avatar
+      img(src=theme.avatar)

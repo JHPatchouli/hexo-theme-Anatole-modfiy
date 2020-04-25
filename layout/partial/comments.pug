@@ -1,0 +1,91 @@
+if theme.copyright
+  if theme.copyright.enable == true
+    div(style="margin:0 30px;/* background-color: #cfcfcf6b; *//* box-shadow: 0px 0px 0px 0px black; *//* text-shadow: 0px 0px 0px #210000; *//* background-color: white; *//* text-shadow: 0 0 #00000038; */color: #000000ad;")
+     
+          blockquote(style="background-color: #c5c5c5;")
+              div.vwrap
+                    .post-copyright-author
+                        span.post-copyright-meta= _p('本文作者')+": "
+                        span.post-copyright-info
+                            a(href=theme.copyright.byurl style="word-wrap:break-word;color: #3668b3c4;") #[=config.author]
+                    .post-copyright-type
+                        span.post-copyright-meta= _p('本文链接')+": "
+                        span.post-copyright-info
+                            a(href=url_for(page.permalink) style="word-wrap:break-word;color: #3668b3c4;") #[=page.permalink]
+                    .post-copyright-notice
+                        span.post-copyright-meta= _p('版权声明')+": "
+                        span.post-copyright-info!= ('<br>本博客所有文章除特别声明外，均采用<a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" style="word-wrap:break-word;color: #3668b3c4;"> CC BY-NC-SA 4.0 </a>许可协议。转载请注明来自')
+                            a(href=theme.copyright.copyrighturl style="word-wrap:break-word;color: #3668b3c4;") #[=config.author] Blog
+if theme.duoshuo
+    a#comments
+    .ds-thread(data-thread-key=page.path, data-title=page.title, data-url=page.permalink, data-author-key='1')
+    script.
+        var duoshuoQuery = {short_name:"#{theme.duoshuo}"};
+        (function() {
+            var ds = document.createElement('script');
+            ds.type = 'text/javascript';ds.async = true;
+            ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+            ds.charset = 'UTF-8';
+            (document.getElementsByTagName('head')[0] 
+             || document.getElementsByTagName('body')[0]).appendChild(ds);
+        })();
+
+
+if theme.disqus
+    a#comments
+    #disqus_thread
+    script.
+        var disqus_shortname = '#{theme.disqus}';
+        var disqus_identifier = '#{page.path}';
+        var disqus_title = '#{page.title}';
+        var disqus_url = '#{config.url}/#{page.path}';
+        (function() {
+            var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+            dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        })();
+    script(id='dsq-count-scr' src='//#{theme.disqus}.disqus.com/count.js' async)
+
+if theme.gentie
+    a#comments
+    #cloud-tie-wrapper.cloud-tie-wrapper
+    script(src='https://img1.cache.netease.com/f2e/tie/yun/sdk/loader.js')
+    script.
+        var cloudTieConfig = { url: document.location.href, sourceId: '#{page.path}', productKey: '#{theme.gentie}', target: 'cloud-tie-wrapper' };var yunManualLoad = true;Tie.loader("aHR0cHM6Ly9hcGkuZ2VudGllLjE2My5jb20vcGMvbGl2ZXNjcmlwdC5odG1s", true);
+
+if theme.youyan
+    a#comments
+    #youyan_thread(class='post')
+    script.
+        (function() {
+
+            var YYDiv = document.createElement('div');
+            YYDiv.id = 'uyan_frame';
+            document.getElementById('youyan_thread').appendChild(YYDiv);
+
+            var YYScript = document.createElement('script');
+            YYScript.type = 'text/javascript';
+            YYScript.async = true;
+            YYScript.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//v2.uyan.cc/code/uyan.js?uid=' + '#{theme.youyan}';
+            YYScript.charset = 'UTF-8';
+            document.getElementById('youyan_thread').appendChild(YYScript);
+
+        })();
+
+if theme.valine
+    if theme.valine.enable == true
+        a#comments
+        #vcomments(style="margin:0 30px;")
+        script(src='//cdn1.lncld.net/static/js/3.0.4/av-min.js')
+        script(src='//cdn.jsdelivr.net/gh/xcss/valine@v1.1.7/dist/Valine.min.js' + '?v=' + theme.version)
+        script.
+          var valine = new Valine({
+            el:'#vcomments',
+            notify:#{theme.valine.notify} || false, 
+            verify:#{theme.valine.verify}|| false, 
+            app_id:'#{theme.valine.appid}',
+            app_key:'#{theme.valine.appkey}',
+            placeholder:'#{theme.valine.placeholder}',
+            path: window.location.pathname,
+            avatar:'#{theme.valine.avatar}'
+          })
